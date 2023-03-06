@@ -8,9 +8,9 @@
 
 <script>
 import { RouterView } from 'vue-router'
-import Wrapper from './components/containers/Wrapper.vue';
-import Headerbar from './components/navigators/Headerbar.vue';
-import NavFooter from './components/navigators/NavFooter.vue';
+import Wrapper from './components/containers/Wrapper.vue'
+import Headerbar from './components/navigators/Headerbar.vue'
+import NavFooter from './components/navigators/NavFooter.vue'
 
 export default {
   name: 'app',
@@ -21,4 +21,3 @@ export default {
   }
 }
 </script>
-
