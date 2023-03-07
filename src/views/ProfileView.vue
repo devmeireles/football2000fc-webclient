@@ -18,6 +18,10 @@
     <div class="profile__items--trophies">
       <player-trophies />
     </div>
+
+    <div class="profile__items--detailed-stats">
+        <detailed-player-stats/>
+    </div>
   </div>
 </template>
 
@@ -26,6 +30,7 @@ import PlayerCard from '../components/cards/PlayerCard.vue'
 import CurrentClub from '../components/cards/CurrentClub.vue'
 import PlayerTrophies from '../components/cards/PlayerTrophies.vue'
 import NationalTeam from '../components/cards/NationalTeam.vue'
+import DetailedPlayerStats from '../components/tables/DetailedPlayerStats.vue'
 
 export default {
   name: 'profile-view',
@@ -33,7 +38,8 @@ export default {
     PlayerCard,
     CurrentClub,
     PlayerTrophies,
-    NationalTeam
+    NationalTeam,
+    DetailedPlayerStats
   }
 }
 </script>
@@ -85,6 +91,10 @@ export default {
     }
 
     &--trophies {
+      margin-top: 30px;
+    }
+
+    &--detailed-stats {
       margin-top: 30px;
     }
   }
