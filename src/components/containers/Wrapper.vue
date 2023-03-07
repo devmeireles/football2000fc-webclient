@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper pa-4">
     <slot />
   </div>
 </template>
@@ -16,7 +16,6 @@ export default {
   background-color: #fff;
   min-height: 100vh;
   margin: 2rem 3rem;
-  padding: 3rem 0;
 
   @include for-phone-only {
     margin: 1rem;

@@ -1,20 +1,33 @@
 <template>
-  <div class="player-trophies">
-    <p class="section-title">Titles and Victories</p>
-    <div class="player-trophies__list">
-      <div class="player-trophies__list-trophy" v-for="trophy in trophies" :key="trophy.name">
-        <div class="player-trophies__list-trophy__image">
-          <img :src="trophy.image" :alt="trophy.name" />
-        </div>
-        <div class="player-trophies__list-trophy__description">
-          <p>{{ trophy.name }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <v-carousel hide-delimiters show-arrows="hover" height="180">
+    <template v-for="(item, index) in trophies">
+      <v-carousel-item v-if="(index + 1) % columns === 1 || columns === 1" :key="index">
+        <v-row class="flex-nowrap px-sm-6">
+          <template v-for="(n, i) in columns">
+            <template v-if="(+index + i) < trophies.length">
+              <v-col :key="i">
+                <v-sheet v-if="(+index + i) < trophies.length">
+                  <div class="d-flex flex-column justify-center align-center pa-6">
+                    <div>
+                      <img :src="trophies[index + i].image" :alt="trophies[index + i].name" />
+                    </div>
+                    <div>
+                      <p>{{ trophies[index + i].name }}</p>
+                    </div>
+                  </div>
+                </v-sheet>
+              </v-col>
+            </template>
+          </template>
+        </v-row>
+      </v-carousel-item>
+    </template>
+  </v-carousel>
 </template>
 
 <script>
+import { useDisplay } from 'vuetify'
+
 export default {
   name: 'player-trophies',
   data() {
@@ -78,44 +91,24 @@ export default {
         }
       ]
     }
-  }
-}
-</script>
-
-<style scoped lang="scss">
-@import '@/assets/mixins';
-.player-trophies {
-  display: flex;
-  flex-direction: column;
-
-  &__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: 15px;
-
-    &-trophy {
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 20%;
-
-      @include for-phone-only {
-        width: 33%;
-      }
-
-      &__description {
-        width: 75%;
-
-        p {
-          text-align: center;
-          font-size: 13px;
-          font-weight: 700;
-        }
+  },
+  computed: {
+    columns() {
+      const { name } = useDisplay()
+      switch (name.value) {
+        case 'xs':
+          return 1;
+        case 'sm':
+          return 2;
+        case 'md':
+          return 3
+        case 'lg':
+        case 'xl':
+          return 5
+        case 'xxl':
+          return 6
       }
     }
-  }
+  },
 }
-</style>
+</script>

@@ -1,28 +1,28 @@
 <template>
-  <div class="profile">
-    <div class="profile__items">
-      <div class="profile__items-section">
-        <h1 class="hide-xs card-title">#10 Gabriel Meireles</h1>
+  <v-container fluid class="profile pa-0 pa-sm-12 bg-surface-variant">
+    <v-row no-gutters class="align-end">
+      <v-sheet class="ma-2 pa-2">
+        <h1 class="hide-xs card-title mb-3">#10 Gabriel Meireles</h1>
         <player-card />
-      </div>
+      </v-sheet>
 
-      <div class="profile__items-section">
+      <v-sheet class="ma-2 pa-2">
         <current-club />
-      </div>
+      </v-sheet>
 
-      <div class="profile__items-section">
+      <v-sheet class="ma-2 pa-2">
         <national-team />
-      </div>
-    </div>
+      </v-sheet>
+    </v-row>
 
-    <div class="profile__items--trophies">
+    <v-row no-gutters class="pt-10">
       <player-trophies />
-    </div>
+    </v-row>
 
-    <div class="profile__items--detailed-stats">
-        <detailed-player-stats/>
-    </div>
-  </div>
+    <!-- <v-row no-gutters class="pt-10">
+      <detailed-player-stats/>
+    </v-row> -->
+  </v-container>
 </template>
 
 <script>
@@ -48,55 +48,10 @@ export default {
 @import '@/assets/mixins';
 
 .profile {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  padding: 0 2rem;
-
   @include for-phone-only {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  &__items {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-
-    @include for-phone-only {
-      flex-direction: column;
-    }
-
-    &-section {
-      h1 {
-        margin-bottom: 10px;
-      }
-
-      @include for-tablet-portrait-up {
-        &:nth-child(2) {
-          padding: 50px;
-        }
-      }
-
-      @include for-phone-only {
-        width: 100%;
-        margin-bottom: 40px;
-      }
-    }
-
-    &__row {
-      display: flex;
-      width: 100%;
-    }
-
-    &--trophies {
-      margin-top: 30px;
-    }
-
-    &--detailed-stats {
-      margin-top: 30px;
-    }
+    padding: 0;
   }
 }
 </style>
